@@ -1,0 +1,344 @@
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+  * { box-sizing: border-box; }
+
+  .sg-wrap {
+    font-family: 'Poppins', sans-serif;
+    background: #F7F3E8;
+    color: #1B2A4A;
+    max-width: 520px;
+    margin: 0 auto;
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid #E4DDC8;
+  }
+
+  .sg-header {
+    background: #1B2A4A;
+    color: #F7F3E8;
+    padding: 22px 24px 18px;
+    position: relative;
+  }
+
+  .sg-header h1 {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0 0 2px;
+  }
+
+  .sg-header p {
+    font-size: 12.5px;
+    color: #C9D2E3;
+    margin: 0;
+  }
+
+  .sg-stitch {
+    height: 10px;
+    background-image: repeating-linear-gradient(90deg, #A6CE39 0 10px, transparent 10px 20px);
+    opacity: 0.85;
+  }
+
+  .sg-body {
+    padding: 22px 24px 24px;
+  }
+
+  .sg-field {
+    margin-bottom: 16px;
+  }
+
+  .sg-field label {
+    display: block;
+    font-size: 12.5px;
+    font-weight: 600;
+    color: #1B2A4A;
+    margin-bottom: 6px;
+  }
+
+  .sg-field input, .sg-field select {
+    width: 100%;
+    padding: 11px 12px;
+    border-radius: 8px;
+    border: 1.5px solid #DAD3BE;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    background: #FFFEFB;
+    color: #1B2A4A;
+  }
+
+  .sg-field input:focus, .sg-field select:focus {
+    outline: none;
+    border-color: #A6CE39;
+  }
+
+  .sg-hint {
+    font-size: 11.5px;
+    color: #8A8266;
+    margin-top: 4px;
+  }
+
+  .sg-btn {
+    width: 100%;
+    background: #A6CE39;
+    color: #1B2A4A;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 14.5px;
+    border: none;
+    border-radius: 9px;
+    padding: 13px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 4px;
+  }
+
+  .sg-btn:active { transform: scale(0.98); }
+
+  .sg-error {
+    color: #B14A3C;
+    font-size: 12.5px;
+    margin-top: 8px;
+    display: none;
+  }
+
+  .sg-divider {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 26px 0 14px;
+  }
+
+  .sg-divider span {
+    font-size: 12px;
+    font-weight: 600;
+    color: #8A8266;
+    white-space: nowrap;
+  }
+
+  .sg-divider::before, .sg-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: repeating-linear-gradient(90deg, #DAD3BE 0 6px, transparent 6px 11px);
+  }
+
+  .sg-log {
+    max-height: 220px;
+    overflow-y: auto;
+  }
+
+  .sg-log-empty {
+    font-size: 12.5px;
+    color: #8A8266;
+    text-align: center;
+    padding: 14px 0;
+  }
+
+  .sg-log-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #EBE5D3;
+  }
+
+  .sg-log-item:last-child { border-bottom: none; }
+
+  .sg-log-name {
+    font-size: 13.5px;
+    font-weight: 600;
+    color: #1B2A4A;
+  }
+
+  .sg-log-meta {
+    font-size: 11.5px;
+    color: #8A8266;
+    margin-top: 1px;
+  }
+
+  .sg-log-resend {
+    background: none;
+    border: 1.5px solid #DAD3BE;
+    border-radius: 7px;
+    padding: 6px 10px;
+    font-size: 11.5px;
+    font-weight: 600;
+    color: #1B2A4A;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    flex-shrink: 0;
+  }
+</style>
+
+<div class="sg-wrap">
+  <div class="sg-header">
+    <h1>Client visiting form</h1>
+    <p>Sapna Garments &middot; Head Store, Gandhi Nagar</p>
+  </div>
+  <div class="sg-stitch"></div>
+
+  <div class="sg-body">
+    <div class="sg-field">
+      <label for="sg-name">Client name</label>
+      <input type="text" id="sg-name" placeholder="e.g. Rajesh Kumar" />
+    </div>
+
+    <div class="sg-field">
+      <label for="sg-mobile">Mobile number</label>
+      <input type="tel" id="sg-mobile" placeholder="10-digit number" maxlength="13" />
+      <div class="sg-hint">Country code (91) is added automatically.</div>
+    </div>
+
+    <div class="sg-field">
+      <label for="sg-type">Client type</label>
+      <select id="sg-type">
+        <option value="Corporate">Corporate</option>
+        <option value="Hospital">Hospital</option>
+        <option value="Hospitality">Hospitality</option>
+        <option value="Security">Security</option>
+        <option value="School">School</option>
+      </select>
+    </div>
+
+    <button class="sg-btn" id="sg-submit">
+      <i class="ti ti-brand-whatsapp" aria-hidden="true"></i>
+      Save and send WhatsApp
+    </button>
+    <div class="sg-error" id="sg-error"></div>
+
+    <div class="sg-divider"><span>Recent visits</span></div>
+    <div class="sg-log" id="sg-log">
+      <div class="sg-log-empty">No visits saved yet.</div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  const STORE_KEY = 'sapna-client-visits';
+
+  const SPECIALIST_LINES = {
+    'Corporate': 'Corporate Uniforms',
+    'Hospital': 'Hospital & Healthcare Uniforms',
+    'Hospitality': 'Hospitality Uniforms — front office, housekeeping & chef wear',
+    'Security': 'Security Uniforms',
+    'School': 'School Uniforms'
+  };
+
+  function buildMessage(name, type) {
+    const specialistLine = SPECIALIST_LINES[type] || 'School, Hospital, Hospitality, Corporate & Security Uniforms';
+    return "🙏 *Thank You for Visiting Sapna Garments!*\n\n" +
+      "Dear " + name + ",\n\n" +
+      "It was truly a pleasure having you at our Head Store today — Sapna Garments, IX/6909, Street, Arya Samaj Gali, Gandhi Nagar, Seelampur, Delhi, 110031.\n\n" +
+      "Thank you for placing your trust in us and for being a valued part of the Sapna Garments family. For over 40 years (since 1982), we've been specialists in " + specialistLine + " across Delhi NCR — and having you with us means the world. 💫\n\n" +
+      "We look forward to serving you again! For any requirement, reorder, or query — we're just a message away. 📞\n\n" +
+      "Team Sapna Garments 🧵\n" +
+      "sapnagarments.in";
+  }
+
+  function normalizeNumber(raw) {
+    let digits = raw.replace(/\D/g, '');
+    if (digits.length === 10) digits = '91' + digits;
+    if (digits.length === 11 && digits.startsWith('0')) digits = '91' + digits.slice(1);
+    return digits;
+  }
+
+  function openWhatsApp(name, mobile, type) {
+    const digits = normalizeNumber(mobile);
+    const text = encodeURIComponent(buildMessage(name, type));
+    const url = 'https://wa.me/' + digits + '?text=' + text;
+    const link = document.createElement('a');
+    link.href = url;
+    link.target = '_blank';
+    link.rel = 'noopener';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  }
+
+  async function loadVisits() {
+    try {
+      const res = await window.storage.get(STORE_KEY, false);
+      return res && res.value ? JSON.parse(res.value) : [];
+    } catch (e) {
+      return [];
+    }
+  }
+
+  async function saveVisits(visits) {
+    try {
+      await window.storage.set(STORE_KEY, JSON.stringify(visits), false);
+    } catch (e) {}
+  }
+
+  function renderVisits(visits) {
+    const log = document.getElementById('sg-log');
+    if (!visits.length) {
+      log.innerHTML = '<div class="sg-log-empty">No visits saved yet.</div>';
+      return;
+    }
+    log.innerHTML = '';
+    visits.slice().reverse().forEach(function(v) {
+      const item = document.createElement('div');
+      item.className = 'sg-log-item';
+      item.innerHTML =
+        '<div><div class="sg-log-name">' + v.name + '</div>' +
+        '<div class="sg-log-meta">' + v.type + ' &middot; ' + v.date + '</div></div>' +
+        '<button class="sg-log-resend"><i class="ti ti-brand-whatsapp" aria-hidden="true"></i> Resend</button>';
+      item.querySelector('.sg-log-resend').addEventListener('click', function() {
+        openWhatsApp(v.name, v.mobile, v.type);
+      });
+      log.appendChild(item);
+    });
+  }
+
+  async function init() {
+    const visits = await loadVisits();
+    renderVisits(visits);
+
+    document.getElementById('sg-submit').addEventListener('click', async function() {
+      const nameEl = document.getElementById('sg-name');
+      const mobileEl = document.getElementById('sg-mobile');
+      const typeEl = document.getElementById('sg-type');
+      const errorEl = document.getElementById('sg-error');
+
+      const name = nameEl.value.trim();
+      const mobile = mobileEl.value.trim();
+      const digits = normalizeNumber(mobile);
+
+      errorEl.style.display = 'none';
+
+      if (!name) {
+        errorEl.textContent = 'Enter the client name.';
+        errorEl.style.display = 'block';
+        return;
+      }
+      if (digits.length !== 12) {
+        errorEl.textContent = 'Enter a valid 10-digit mobile number.';
+        errorEl.style.display = 'block';
+        return;
+      }
+
+      const visits = await loadVisits();
+      visits.push({
+        name: name,
+        mobile: mobile,
+        type: typeEl.value,
+        date: new Date().toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' })
+      });
+      await saveVisits(visits);
+      renderVisits(visits);
+
+      openWhatsApp(name, mobile, typeEl.value);
+
+      nameEl.value = '';
+      mobileEl.value = '';
+    });
+  }
+
+  init();
+})();
+</script>
